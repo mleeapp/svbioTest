@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="refApp">
+    <head>
+        <title>Reference</title>
+		<script src="lib/angular/angular.js"></script>
+		<script src="lib/angular-route/angular-route.js"></script>
+		<link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+		<link href="lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" />
+		<script>
+			angular.module("refApp", []);
+		</script>
+		<script src='controllers/refAppController.js'></script>
+    </head>
+    <body ng-controller="refAppCtrl">
+        <h1>Reference</h1>
+
+		<div class="alert alert-danger" ng-show="data.error">
+			Error({{data.error}}). The data was not loaded.
+		</div>
+		
+		<div class="container" ng-hide="data.error">
+			<div>
+				<div class="lead">{{data.text}}</div>
+			</div>
+			
+			<div>
+				<div ng-repeat="ref in data.references">
+					<span>[{{ref.number}}] {{ref.TITLE}} ({{ref.PMID}})</span>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
